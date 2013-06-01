@@ -9,9 +9,14 @@ describe "Static pages" do
       expect(page).to have_content('Микроблог КубГУ')
     end
 
-    it "should have the title 'Главная'" do
+    it "should have the base title" do
       visit '/static_pages/home'
-      expect(page).to have_title("Микроблог КубГУ | Главная")
+      expect(page).to have_title("Микроблог КубГУ")
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title('| Главная')
     end
   end
 
