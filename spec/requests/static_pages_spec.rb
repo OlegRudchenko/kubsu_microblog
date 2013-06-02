@@ -2,48 +2,28 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+  subject { page }
+
   describe "Home page" do
+    before { visit root_path }
 
-    it "should have the content 'Микроблог КубГУ'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Микроблог КубГУ')
-    end
-
-    it "should have the base title" do
-      visit '/static_pages/home'
-      expect(page).to have_title("Микроблог КубГУ")
-    end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).not_to have_title('| Главная')
-    end
+    it { should have_content('Микроблог КубГУ') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Главная') }
   end
 
 describe "Help page" do
+  before { visit help_path }
 
-    it "should have the content 'Помощь'" do
-      visit '/static_pages/help'
-      expect(page).to have_content('Помощь')
-    end
-
-    it "should have the title 'Помощь'" do
-      visit '/static_pages/help'
-      expect(page).to have_title("Микроблог КубГУ | Помощь")
-    end
+    it { should have_content('Помощь') }
+    it { should have_title(full_title('Помощь')) }
   end
 
   describe "About page" do
+    before { visit about_path }
 
-    it "should have the content 'О нас'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('О нас')
-    end
-
-    it "should have the title 'О нас'" do
-      visit '/static_pages/about'
-      expect(page).to have_title("Микроблог КубГУ | О нас")
-    end
+    it { should have_content('О нас') }
+    it { should have_title(full_title('О нас')) }
   end
 
 end
