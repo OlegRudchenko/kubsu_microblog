@@ -79,7 +79,7 @@ end
 
   describe "when password confirmation is nil" do
     before do
-      @user = User.new(name: "Example User", email: "user@example.com",
+      @user = User.new(name: "Oleg Rudchenko", email: "oleg.rudchenko@gmail.com",
                      password: "foobar", password_confirmation: nil)
     end
     it { should_not be_valid }
